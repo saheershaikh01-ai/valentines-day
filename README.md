@@ -1,1 +1,105 @@
-s
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day Swizel ❤️</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#ffdde1,#ee9ca7);
+  text-align:center;
+  margin:0;
+  overflow:hidden;
+}
+
+h1{
+  color:white;
+  margin-top:20px;
+}
+
+.balloon{
+  width:80px;
+  height:100px;
+  background:red;
+  border-radius:50%;
+  position:absolute;
+  cursor:pointer;
+  box-shadow: inset -5px -10px rgba(0,0,0,0.2);
+}
+
+#photoBox img{
+  max-width:80%;
+  border-radius:15px;
+  margin-top:20px;
+}
+
+#finalMessage{
+  display:none;
+  max-width:80%;
+  margin:40px auto;
+  font-size:20px;
+  color:white;
+  background:rgba(0,0,0,0.4);
+  padding:20px;
+  border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Pop all the balloons, Swizel 🎈</h1>
+
+<div id="photoBox"></div>
+
+<div id="finalMessage">
+Swizel, every moment with you feels like a beautiful blessing in my life. 
+You have been my happiness, my peace, and my biggest support through everything. 
+With you, even the simplest days become special, and every memory we make together 
+is something I treasure deeply. I am grateful for your love, your smile, and the 
+way you understand me without words. On this Valentine’s Day, I just want you to know 
+that my heart chooses you again and again, every single day. I love you more than 
+words can ever fully express, and I can’t wait to create many more memories with you. ❤️
+</div>
+
+<script>
+const images = [
+  "photo1.jpg",
+  "photo2.jpg",
+  "photo3.jpg"
+];
+
+let popped = 0;
+
+function createBalloon(i){
+  const balloon = document.createElement("div");
+  balloon.className = "balloon";
+  balloon.style.left = Math.random()*90 + "vw";
+  balloon.style.top = Math.random()*80 + "vh";
+
+  balloon.onclick = () => {
+    balloon.remove();
+    
+    const img = document.createElement("img");
+    img.src = images[i];
+    document.getElementById("photoBox").innerHTML = "";
+    document.getElementById("photoBox").appendChild(img);
+
+    popped++;
+    if(popped === images.length){
+      setTimeout(()=>{
+        document.getElementById("finalMessage").style.display="block";
+      },1000);
+    }
+  };
+
+  document.body.appendChild(balloon);
+}
+
+for(let i=0;i<images.length;i++){
+  createBalloon(i);
+}
+</script>
+
+</body>
+</html>
