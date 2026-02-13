@@ -3,67 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
+    <title>Happy Valentine's Day, Swizel!</title>
     <style>
         body {
-            background-color: #ffcccb;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            overflow: hidden;
         }
-        .heart {
-            width: 50px;
-            height: 50px;
+        .balloon {
+            width: 100px;
+            height: 150px;
             background-color: red;
+            border-radius: 50% 50% 0 0;
             position: relative;
-            display: inline-block;
+            cursor: pointer;
             margin: 20px;
-            animation: bounce 1s infinite;
+            transition: transform 0.3s;
         }
-        .heart:before, .heart:after {
-            content: '';
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            border-radius: 50%;
+        .balloon:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
             position: absolute;
-        }
-        .heart:before {
-            top: -25px;
-            left: 0;
-        }
-        .heart:after {
-            left: 25px;
-            top: 0;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <h1>Happy Valentine's Day!</h1>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <h2 class="love-message">"Love is not just a feeling, it's a choice." 💖</h2>
-    <img src="roses.jpg" alt="Roses" style="width:50%; margin-top:20px;">
+    <div class="balloon" onclick="burst(this)">
+        <div class="message">Happy Valentine's Day, Swizel! 💖</div>
+    </div>
     <script>
-        const messages = [
-            "You are my sunshine!",
-            "Love you to the moon and back!",
-            "You make my heart smile!",
-        ];
-        
-        const loveMessage = document.querySelector('.love-message');
-        loveMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+        function burst(balloon) {
+            balloon.style.backgroundColor = 'transparent';
+            balloon.querySelector('.message').style.display = 'block';
+        }
     </script>
 </body>
 </html>
