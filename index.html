@@ -3,321 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Happy Valentine's Day Swizel 💕</title>
+    <title>Happy Valentine's Day!</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Courier New', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .container {
+            background-color: #ffcccb;
             text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            animation: fadeIn 1s ease-in;
+            font-family: Arial, sans-serif;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .heart {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+            animation: bounce 1s infinite;
         }
-
-        h1 {
-            font-size: 48px;
-            color: #ff1744;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .heart:before, .heart:after {
+            content: '';
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
         }
-
-        .heart-display {
-            font-size: 80px;
-            margin: 30px 0;
-            animation: heartbeat 1.2s infinite;
+        .heart:before {
+            top: -25px;
+            left: 0;
         }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            25% {
-                transform: scale(1.1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            75% {
-                transform: scale(1.1);
-            }
+        .heart:after {
+            left: 25px;
+            top: 0;
         }
-
-        .options-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .option-btn {
-            padding: 15px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hearts-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .hearts-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
-        }
-
-        .messages-btn {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-        }
-
-        .messages-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.4);
-        }
-
-        .rose-btn {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            color: white;
-        }
-
-        .rose-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(250, 112, 154, 0.4);
-        }
-
-        .song-btn {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            color: #333;
-        }
-
-        .song-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(168, 237, 234, 0.4);
-        }
-
-        .content {
-            margin-top: 20px;
-            min-height: 100px;
-            padding: 20px;
-            background: rgba(255, 192, 203, 0.2);
-            border-radius: 10px;
-            border-left: 5px solid #ff1744;
-        }
-
-        .message-text {
-            font-size: 18px;
-            color: #333;
-            line-height: 1.6;
-            margin: 10px 0;
-        }
-
-        .hearts-display {
-            font-size: 40px;
-            line-height: 2;
-            animation: floatHearts 3s ease-in-out infinite;
-        }
-
-        @keyframes floatHearts {
-            0%, 100% {
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0);
             }
-            50% {
-                transform: translateY(-10px);
+            40% {
+                transform: translateY(-20px);
             }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .signature {
-            margin-top: 20px;
-            font-style: italic;
-            color: #ff1744;
-            font-size: 18px;
-        }
-
-        .reset-btn {
-            margin-top: 20px;
-            padding: 10px 30px;
-            background: #ff1744;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .reset-btn:hover {
-            background: #d50000;
-            transform: scale(1.05);
-        }
-
-        .falling-hearts {
-            position: fixed;
-            top: -50px;
-            font-size: 30px;
-            animation: fall 3s linear forwards;
-            pointer-events: none;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
+            60% {
+                transform: translateY(-10px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Valentine's Day! 💕</h1>
-        <p style="font-size: 24px; color: #ff1744; margin-bottom: 10px;">For Swizel</p>
-        
-        <div class="heart-display">❤️</div>
-
-        <p style="color: #666; font-size: 16px; margin-bottom: 20px;">
-            Choose an option to express your love:
-        </p>
-
-        <div class="options-container">
-            <button class="option-btn hearts-btn" onclick="showHearts()">🎈 Floating Hearts</button>
-            <button class="option-btn messages-btn" onclick="showMessages()">💌 Love Messages</button>
-            <button class="option-btn rose-btn" onclick="showRoses()">🌹 Rose Garden</button>
-            <button class="option-btn song-btn" onclick="showSong()">🎵 Love Songs</button>
-        </div>
-
-        <div class="content">
-            <div id="hearts-content" class="hidden hearts-display">
-                ❤️ 💕 💖 💗 💘 💝 💞 💓
-            </div>
-            <div id="messages-content" class="hidden">
-                <p class="message-text" id="message-display"></p>
-            </div>
-            <div id="roses-content" class="hidden hearts-display">
-                🌹 🌷 🌺 🌸 💐 🌼 🌻
-            </div>
-            <div id="song-content" class="hidden">
-                <p class="message-text">♥️ You are my love, my life, my everything ♥️</p>
-                <p class="message-text">♥️ With you, every moment is special ♥️</p>
-                <p class="message-text">♥️ Together, we create the most beautiful melody ♥️</p>
-            </div>
-        </div>
-
-        <div class="signature">
-            With all my love,<br>
-            Your Valentine ❤️
-        </div>
-
-        <button class="reset-btn" onclick="reset()">← Back to Menu</button>
-    </div>
-
+    <h1>Happy Valentine's Day!</h1>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <h2 class="love-message">"Love is not just a feeling, it's a choice." 💖</h2>
+    <img src="roses.jpg" alt="Roses" style="width:50%; margin-top:20px;">
     <script>
-        const loveMessages = [
-            "❤️ You are my greatest blessing! ❤️",
-            "💕 Every day with you is a dream come true! 💕",
-            "💖 You make my heart skip a beat! 💖",
-            "💗 You are my soulmate and my best friend! 💗",
-            "💘 I love you more than words can express! 💘",
-            "💞 You are my forever and always! 💞",
-            "💓 My heart belongs to you completely! 💓",
-            "💝 You are the love of my life! 💝",
-            "✨ With you, I found my home! ✨",
-            "🌟 You are my shining star! 🌟",
-            "🎀 Life is beautiful with you by my side! 🎀",
-            "🎁 You are my greatest gift! 🎁",
-            "🌹 You are my perfect rose! 🌹",
-            "👑 You are my queen of hearts! 👑",
-            "🔥 You set my soul on fire with love! 🔥"
+        const messages = [
+            "You are my sunshine!",
+            "Love you to the moon and back!",
+            "You make my heart smile!",
         ];
-
-        function showHearts() {
-            hideAll();
-            document.getElementById('hearts-content').classList.remove('hidden');
-            createFallingHearts();
-        }
-
-        function showMessages() {
-            hideAll();
-            document.getElementById('messages-content').classList.remove('hidden');
-            const randomMsg = loveMessages[Math.floor(Math.random() * loveMessages.length)];
-            document.getElementById('message-display').textContent = randomMsg;
-        }
-
-        function showRoses() {
-            hideAll();
-            document.getElementById('roses-content').classList.remove('hidden');
-        }
-
-        function showSong() {
-            hideAll();
-            document.getElementById('song-content').classList.remove('hidden');
-        }
-
-        function hideAll() {
-            document.getElementById('hearts-content').classList.add('hidden');
-            document.getElementById('messages-content').classList.add('hidden');
-            document.getElementById('roses-content').classList.add('hidden');
-            document.getElementById('song-content').classList.add('hidden');
-        }
-
-        function reset() {
-            hideAll();
-        }
-
-        function createFallingHearts() {
-            const hearts = ['❤️', '💕', '💖', '💗', '💘', '💞', '💓'];
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'falling-hearts';
-                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 100);
-            }
-        }
-
-        // Auto-show a message on load
-        window.addEventListener('load', () => {
-            setTimeout(showMessages, 500);
-        });
+        
+        const loveMessage = document.querySelector('.love-message');
+        loveMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
     </script>
 </body>
 </html>
